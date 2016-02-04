@@ -1,0 +1,50 @@
+2316
+
+image file formats: 
+ compressed / uncompressed
+ compressed:
+  - smaller
+  - .png .jpg .gif 
+ uncompressed:
+  - no degredation 
+  - raw pixel information
+  - .tiff .bmp .raw 
+
+ lossy / lossless
+ lossy:
+  - loses original information
+  - .jpg
+ lossless:
+  - retains all of the data
+  - .tiff .bmp .raw .png
+
+raster / vector
+ raster:
+  - cannot be scaled up well
+  - defined by a grid of pixels
+ vector:
+  - list of shapes in the image (list of instructions)
+run-length encoding:
+ bbbbbrrryyyy
+ 5b3r4y 
+
+
+netpbm 
+ - uncompressed 
+ - lossless 
+ - large files (.ppm)
+
+
+2416
+
+netpbm
+ -- ascii values
+ P3 <X-RES> <Y-RES> <MAX_COLOR_VALUE>
+ raster data through < #R #G #B >  
+ all white space is equivalent 
+
+ ctrl c ctrl c (switch to and from image in ppm file)
+ 
+ 0, 0 is upper left
+ 
+
