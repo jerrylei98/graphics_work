@@ -13,9 +13,9 @@ cY = 0
 
 while(cY < Y_MAX):
     while(cX < X_MAX):
-          r = 
-          g =
-          b =
+          r = cX % MAX_COLOR
+          g = cX % MAX_COLOR
+          b = cX % MAX_COLOR
           fd.write(" " + str(r) + " " + str(g) + " " + str(b))
           cX+=1
     cY += 1
