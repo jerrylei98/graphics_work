@@ -1,5 +1,0 @@
-#!/bin/bash
-
-chdir ~/github/image_files/
-touch testscript
-#python upload.py
