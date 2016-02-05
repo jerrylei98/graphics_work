@@ -5,8 +5,8 @@ Y_MAX = 500
 MAX_COLOR = 255
 
 
-fd = open("../../image_files/" + FILE_NAME + ".ppm", "w")
-#fd = open(FILE_NAME, 'w')
+#fd = open("../../image_files/" + FILE_NAME + ".ppm", "w")
+fd = open(FILE_NAME + ".ppm", 'w')
 fd.write(IMAGE_TYPE + " " + str(X_MAX) + " " + str(Y_MAX) + " " + str(MAX_COLOR))
 
 cY = 0
