@@ -22,4 +22,6 @@ def upload_local(fpath):
     data = r.json()
     return data.get('data').get('id')
                       
-print upload_local("/home/jerry/github/image_files/assignment_1.png")
+d = upload_local("/home/jerry/github/image_files/assignment_1.png")
+
+print d
