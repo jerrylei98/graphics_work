@@ -1,5 +1,8 @@
 import sys
-go = 'imgur'
+if len(sys.argv) > 1:
+    go = sys.argv[1]
+else:
+    go = ""
 
 FILE_NAME = "assignment_1" #no need for .ppm
 IMAGE_TYPE = "P3"

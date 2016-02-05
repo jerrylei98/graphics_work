@@ -52,3 +52,15 @@ netpbm
 
 bresenharn's line algorithm:
 y = mx+b
+y = \y / \x x + b
+y\x = x\y + b\x
+0 = x\y - y\x + b\x
+A = \y
+B = -\x
+C = b\x
+
+0 = Ax + By + C
+f(x,y) = Ax+ By+C = 0 ( x,y) is on thel ine
+< 0 (x,y) is above the line
+> 0 (x,y) is below the line
+
