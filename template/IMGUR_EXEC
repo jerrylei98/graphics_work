@@ -1,0 +1,10 @@
+import subprocess
+
+cmd = "../scripts/upload.sh " + FILE_NAME
+p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE) #found on stackoverflow                                                     
+p.wait()
+
+#read the imgur link                                                                                                                                              
+fd = open("../scripts/imgur_return.txt", "r")
+print '\n' + fd.read() + '\n'
+fd.close()

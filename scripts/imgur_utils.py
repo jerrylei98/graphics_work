@@ -20,8 +20,9 @@ def upload_local(fpath):
                                          'type': 'file'},
                                          headers = {'Authorization': 'Client-ID ' + CLIENT_ID})
     data = r.json()
-    return data.get('data').get('id')
+    image_id = data.get('data').get('id')
+    return "https://imgur.com/" + image_id
                       
-d = upload_local("/home/jerry/github/image_files/assignment_1.png")
+#print upload_local("/home/jerry/github/image_files/assignment_1.png")
 
-print d
+#print "www.imgur.com/" + d
