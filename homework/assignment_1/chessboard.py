@@ -25,13 +25,13 @@ cX = 0
 while(cX < X_MAX):
     cY = 0
     while(cY < Y_MAX):
-          if int(cY / 80) % 2 == 0:
-              if int(cX / 80) % 2 == 1:
+          if (cY / 80) % 2 == 0:
+              if (cX / 80) % 2 == 1:
                   fd.write(white)
               else:
                   fd.write(black)
           else:
-              if int(cX / 80) % 2 == 1:
+              if (cX / 80) % 2 == 1:
                   fd.write(black)
               else:
                   fd.write(white)          
