@@ -22,13 +22,13 @@ fd.write(IMAGE_TYPE + " " + str(X_MAX) + " " + str(Y_MAX) + " " + str(MAX_COLOR)
 
 #<--Drawing goes here-->#
 
-cX = 0
 cY = 0
 
 c = raw_input("Color ex. '255 255 255': ")
 color = ' ' + c + ' '
 
 while cY < Y_MAX:
+    cX = 0
     while cX < X_MAX:
         fd.write(color)
         cX += 1
