@@ -1,6 +1,6 @@
-import sys
-if len(sys.argv) > 1:
-    go = sys.argv[1]
+from sys import argv
+if len(argv) > 1:
+    go = argv[1]
 else:
     go = ""
 
@@ -42,9 +42,9 @@ while(cX < X_MAX):
 fd.close()
 
 if go == "imgur":
-    import subprocess
+    from subprocess import Popen,PIPE
     cmd = "../../scripts/upload.sh " + FILE_NAME
-    p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE) #found on stackoverflow
+    p = subprocess.Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
     p.wait()
 
     #read the imgur link
