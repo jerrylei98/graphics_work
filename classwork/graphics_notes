@@ -47,7 +47,6 @@ netpbm
  
  0, 0 is upper left
  
-
 2516
 
 bresenharn's line algorithm:
@@ -60,7 +59,152 @@ B = -\x
 C = b\x
 
 0 = Ax + By + C
-f(x,y) = Ax+ By+C = 0 ( x,y) is on thel ine
+f(x,y) = Ax+ By+C = 0 ( x,y) is on the line
 < 0 (x,y) is above the line
 > 0 (x,y) is below the line
 
+1 (x+1, y)
+2 (x+1, y+1)
+midpoint (x+1, y+1/2)
+
+f(x+1, y + 1/2) = 0 midpoint is on the line, either point is okay
+<0 midpoint is above line -> draw (x+1, y)
+>0 midpoint is below line -> draw (x+1, y+1)
+
+2916
+
+bresenham's line algorithm:
+A = \y 
+B = -\x 
+C = (\x)b
+
+1. (x+1, y)
+2. (x+1, y+1)
+3. (midpoint) --> (x+1, y+1/2)
+
+first draft algorithm
+
+//(x0, y0) -> (x1, y1)
+
+
+x = x0 , y = y0
+while x <= x1: //x is always incremented
+ //draw (x,y)
+ d = f(x+1,y+1/2)
+ if(d > 0){
+  y += 1
+ }
+ x += 1
+
+
+initial value of d
+
+d = f(x0 + 1, y0 + 1/2)
+d = A(x0 + 1) + B(y0 + 1/2) + C
+
+d = Ax0 + A + By0 + B/2 + C
+
+d = Ax0 + By0 + C     + A + B/2
+d = 0 + A + B/2
+
+d = A + B/2
+
+
+
+2nd draft algorithm:
+d = A + B/2
+while x < x1: 
+ plot(x,y)
+ if d > 0:
+  y += 1
+ x += 1
+ d = f(x+1, y+1/2)
+
+*** if d > 0
+
+x -> x+1 
+y -> y+1
+
+d=f(x+1,y+1)
+d=A(x+1) + B(y+1) + C
+d = Ax + A + By + B + C
+d = Ax + By + C + A + B
+Ax + By + C = f(x,y) --> previous point's d
+
+d = d + A + B
+
+
+
+*** if d < 0
+x -> x + 1 y -> y
+d = f(x+1, y)
+d = A(x+1) + By +C
+d = Ax + By + C + A
+
+d = d + A
+
+3rd draft:
+
+d = A + B/2
+while(x <= x1)
+ plot (x,y)
+ if(d> 0)
+  y += 1
+  d += B
+ x+=1
+ d+=A
+     
+21016
+
+d = A + B/2 --> D = 2A + B
+d = d + A --> D = D + 2A
+d = d + A + B --> D = D + 2A + 2B
+A = y1 - y0
+B = -(x1 - x0)
+d = 2A + B 
+while (x <= x1):
+ plot(x,y)
+ if(d>0)
+  y += 1
+  d +=2B
+ x +=1
+ d +=2A
+
+OCTANT II:
+
+m > 1
+possible pixels: (x, y+1), (x+1, y+1)
+midpoint: (x+1/2, y+1)
+
+if f(x,y) < 0, (x,y) is to the left
+if f(x,y) > 0, (x,y) is to the right
+
+test:
+if d > 0, draw (x, y+1)
+if d < 0, draw (x+1,y+1)
+
+
+if d<0:
+   d= d+A+B
+if d>0:
+   d = d + B
+
+algorithm changes:
+
+d = A + 2B
+
+while(y<=y1)
+ plot(x,y)
+ if(d< 0)
+  x+=1
+  d+=2A
+ y+= 1
+ d+=2B
+
+assume every line goes from left to right
+
+OCTANT VIII:
+-1 < m < 0 
+possible points: 
+(x+1, y-1)
+(x+1, y)
