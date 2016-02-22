@@ -208,3 +208,31 @@ OCTANT VIII:
 possible points: 
 (x+1, y-1)
 (x+1, y)
+
+22216
+
+using matrices
+point matrix[p0 p1 p2 p3 p4 p5]
+
+(edge matrix)
+while(i < points.length-2)
+ draw_line(points[i], points[i+1]
+ i+=2
+
+
+
+shape matrix: matrix per shape
+edge matrix: [p0 p1 p1 p2 p2 p0 p3 p4]
+vertex matrix: [p0 p1 p2], [p1 p0 p2]
+
+
+edge matrix: [p0 p1 p1 p2 p2 p0 p3 p4]
+[
+x0 x1 x1 x2
+y0 y1 y1 y2 
+z0 z1 z1 z2
+]
+
+edges = new_matrix
+add_edge(edges, p0, p1); //prob multiple calls
+draw_edges(edges)
