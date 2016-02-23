@@ -4,9 +4,10 @@ from draw import *
 
 #--Checks if argument is 'imgur'--
 
-if len(sys.argv) > 1:
-    go = sys.argv[1]
-    fname = "../../../assignment_n"
+if len(argv) > 1:
+    go = argv[1]
+    FILE_NAME = "assignment_2"
+    fname = "../../../" + FILE_NAME
 else:
     go = ""
 
@@ -20,6 +21,7 @@ color = [ 0, 255, 0 ]
 
 #octant I
 draw_line( screen, 0, 0, XRES - 1, YRES - 75, color )
+"""
 #octant II
 draw_line( screen, 0, 0, XRES - 75, YRES - 1, color )
 #octant VIII
@@ -53,9 +55,9 @@ draw_line( screen, 0, YRES / 2, XRES - 1, YRES / 2, color )
 #vertical
 draw_line( screen, XRES / 2, 0, XRES / 2, YRES - 1, color )
 
+"""
 
-
-if go not "imgur":
+if go != "imgur":
     display(screen)
 
 
@@ -66,7 +68,7 @@ if go == "imgur":
     from subprocess import Popen, PIPE
     save_ppm(screen, fname)
     cmd = "../../scripts/upload.sh " + FILE_NAME
-    p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE) #found on stackoverflow
+    p = subprocess.Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
     p.wait()
 
     #read the imgur link

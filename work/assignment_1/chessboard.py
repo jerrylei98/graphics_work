@@ -44,7 +44,7 @@ fd.close()
 if go == "imgur":
     from subprocess import Popen,PIPE
     cmd = "../../scripts/upload.sh " + FILE_NAME
-    p = subprocess.Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
+    p = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
     p.wait()
 
     #read the imgur link
