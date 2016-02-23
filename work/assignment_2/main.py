@@ -15,12 +15,14 @@ else:
 #constant
 
 
+
 screen = new_screen()
+
 color = [ 0, 255, 0 ]
+
 
 #octant I
 draw_line( screen, 0, 0, XRES - 1, YRES - 75, color )
-
 #octant II
 draw_line( screen, 0, 0, XRES - 75, YRES - 1, color )
 #octant VIII
@@ -53,6 +55,10 @@ color[ GREEN ] = MAX_COLOR
 draw_line( screen, 0, YRES / 2, XRES - 1, YRES / 2, color )
 #vertical
 draw_line( screen, XRES / 2, 0, XRES / 2, YRES - 1, color )
+
+
+
+
 
 #---------------------------------------------------------------#
 
