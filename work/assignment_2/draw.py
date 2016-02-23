@@ -3,7 +3,7 @@ from display import *
 def draw_line( screen, x0, y0, x1, y1, color ):
     c1 = 0;
     while(c1 < XRES):
-        plot(screen, DEFAULT_COLOR, c1, 250)
+        plot(screen, color, c1, 250)
         c1+=1
 """    m = (y1 - y0) / (x1 - x0)
     #QUADRANT 1
