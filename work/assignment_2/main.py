@@ -6,15 +6,14 @@ from draw import *
 
 if len(argv) > 1:
     go = argv[1]
-    FILE_NAME = "assignment_2"
-    fname = "../../../" + FILE_NAME
+    FILE_NAME = "assignment_2.ppm"
+    fname = "../../../image_files/" + FILE_NAME
 else:
     go = ""
 
 #-----------
 #constant
 
-screen = new_screen()
 
 screen = new_screen()
 color = [ 0, 255, 0 ]
@@ -60,15 +59,12 @@ draw_line( screen, XRES / 2, 0, XRES / 2, YRES - 1, color )
 if go != "imgur":
     display(screen)
 
-
-
-
 #--Executes upload to imgur--
 if go == "imgur":
     from subprocess import Popen, PIPE
     save_ppm(screen, fname)
     cmd = "../../scripts/upload.sh " + FILE_NAME
-    p = subprocess.Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
+    p = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
     p.wait()
 
     #read the imgur link
