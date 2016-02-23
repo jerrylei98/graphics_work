@@ -12,44 +12,44 @@ def draw_line( screen, x0, y0, x1, y1, color ):
     x = x0
     y = y0
 
-    A = y1 - y0
-    B = x0 - x1
+    dy = y1 - y0
+    dx = x0 - x1
             
     if y1 > y0: #Quadrant 1/2
-        d = A + A + B
-        if A <  -B:
+        d = dy + dy + dx
+        if dy <  -dx:
             while x < x1:
                 plot(screen, color, x, y)
                 if d > 0:
                     y += 1
-                    d += B * 2
+                    d += dx * 2
                 x += 1
-                d += A * 2
+                d += dy * 2
         else:
             while y < y1:
                 plot(screen, color, x, y)
                 if d < 0:
                     x += 1
-                    d += A * 2
+                    d += dy * 2
                 y += 1
-                d += B * 2
+                d += dx * 2
     else: #Quadrant 3/4
-        d = A + A - B
-        if A > B:
+        d = dy + dy - dx
+        if dy > dx:
             while x < x1:
                 plot(screen,color,x,y)
                 if d < 0:
                     y -= 1
-                    d -= B * 2
+                    d -= dx * 2
                 x += 1
-                d += A * 2
+                d += dy * 2
         else:
             while y > y1:
                 plot(screen,color,x,y)
                 if d> 0:
                     x += 1
-                    d += A * 2
+                    d += dy * 2
                 y -= 1
-                d -= B * 2
+                d -= dx * 2
 
 
