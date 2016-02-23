@@ -236,3 +236,40 @@ z0 z1 z1 z2
 edges = new_matrix
 add_edge(edges, p0, p1); //prob multiple calls
 draw_edges(edges)
+
+22316
+
+matrix math review:
+- scalar multiplication
+- matrix multiplcation
+- multiplicitaive identity matrix
+
+scalar multiplication:
+s * [a b\c d] = [sa sb\sc sd]
+
+matrix multiplication:
+- not commutative
+- m0 * m1 != m1 * m0
+- # of columns in m0 = # rows in m1
+[a b c] * [1\2\3] = [1a + 2b + 3c]
+
+dimensions: 
+1 x 3  * 3 x 1 = 1 x 1  
+A x B * B x C = A x C
+
+[1 2 3 \ 4 5 6] * [10 40 \ 20 50 \ 30 60] = [1(10) + 2(20) + 3(30) 1(40) + 2(50)+ 3(60)\4(10)+....]
+
+multiplicative identity
+-always square
+-diagonal of 1's
+-0's everywher eelse
+
+[1 0 0 0\0 1 0 0\0 0 1 0\0 0 0 1] * [a e \ b f \ c g \ d h]  = [a e \ b f \ c g \ d h]
+
+[a e \ b f \ c g \ d h] * [1 0\ 0 1] = same
+
+
+matrices in graphics:
+scaling
+(x,y,z) --s(a,b,c)--> (ax, by, cz);
+[a 0 0 0\0 b 0 0\0 0 c 0\0 0 0 d] * [x\y\z\1] = [zx\by\cz\1]
