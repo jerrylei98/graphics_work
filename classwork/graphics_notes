@@ -270,6 +270,35 @@ multiplicative identity
 
 
 matrices in graphics:
-scaling
+scaling -- with respect to the origin
 (x,y,z) --s(a,b,c)--> (ax, by, cz);
 [a 0 0 0\0 b 0 0\0 0 c 0\0 0 0 d] * [x\y\z\1] = [zx\by\cz\1]
+
+
+22416
+
+transformation matrices
+
+scaling(from yesterday)
+
+translating: (x,y,z) --t(a,b,c)--> (a+x,b+y,c+z)
+
+[1 0 0 a\0 1 0 b\0 0 1 c\ 0 0 0 1] * [x\y\z\1] = [a+x\b+y\c+z\1] 
+
+rotating: (x,y,z) --r_z-axisT--> (?,?,z)
+
+polar coordinate: 
+x = r cos phi, y = r sin phi
+xr = r cos(phi + theta) = r cos(phi) cos(theta) - rsin(theta)sin(phi) = xcos (theta) - y sin (theta) 
+yr = r sin(phi + theta)
+
+rotating: (x,y,z) --r_zaxisT--> (xcos(theta)-ysin(theta), ycos(theta) + xsin(theta),z)
+
+[cos(theat) -sin(theta) 0 0\
+sin(theta) cos(theta) 0 0\
+0 0 1 0\
+0 0 0 1]
+*
+[x\y\z\1]
+=
+[xcos(theta)-ysin(theta)\ycos(theta)+xsin(theta)\z\1]
