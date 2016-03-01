@@ -14,13 +14,9 @@ else:
 #-----------
 #constant
 
-
-
 screen = new_screen()
 
 color = [ 0, 255, 0 ]
-
-draw_line(screen
 
 
 
