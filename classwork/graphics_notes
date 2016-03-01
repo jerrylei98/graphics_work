@@ -302,3 +302,33 @@ sin(theta) cos(theta) 0 0\
 [x\y\z\1]
 =
 [xcos(theta)-ysin(theta)\ycos(theta)+xsin(theta)\z\1]
+
+22516
+
+(x,y,z) --Rx,theta--> (x, ycos(theta)-zsin(theta), ysin(theta)+zcos(theta))
+[1 0 0 0\
+0 cos(theta) -sin(theta) 0\
+0 sin(theta) cos(theta) 0\
+0 0 0 1]
+
+(x,y,z) --Ry,theta--> (xcos(theta)-zsin(theta), y, xsin(theta)+zcos(theta))
+
+[cos(theta) 0 -sin(theta) 0\
+0 1 0 0\
+sin(theta) 0 cos(theta) 0\
+0 0 0 1]
+
+
+Applying Transformations:
+
+E0 : edge matrix 
+T: translation matrix
+S: scale matrix
+R: rotation matrix
+
+T * E0 = E1: translated
+S * E1 = E2: translated -> scaled
+R * E2 = E3: translated -> scaled -> rotated
+
+More efficient:
+E3 = R * S * T * E0
