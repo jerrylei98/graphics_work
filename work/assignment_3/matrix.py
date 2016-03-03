@@ -1,7 +1,8 @@
 import math
 
 def make_translate( x, y, z ):
-    pass
+    m = [[x],[y],[z],[1]]
+    return m
 
 def make_scale( x, y, z ):
     pass
@@ -66,11 +67,11 @@ def scalar_mult( matrix, x ):
 #m1 * m2 -> m2
 def matrix_mult( m1, m2 ):
     m_fill = new_matrix(len(m1), len(m2[0]))
-    int c1 = 0
+    c1 = 0
     while c1 < len(m_fill):
         c2 = 0
         while c2 < len(m_fill[0]):
-
+            pass
 
 
 m_test = new_matrix(4, 2)
@@ -85,3 +86,4 @@ m_test[1][3] = 8
 print print_matrix(m_test)
 
 
+print print_matrix(make_translate(4,5,6))
