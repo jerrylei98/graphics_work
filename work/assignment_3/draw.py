@@ -4,7 +4,7 @@ from matrix import *
 
 def draw_lines( matrix, screen, color ):
     c1 = 0
-    while c1 < len(matrix) - 1:
+    while c1 < len(matrix[0]) - 1:
         draw_line(screen, matrix[0][c1], matrix[1][c1], matrix[0][c1+1], matrix[1][c1+1], color)
         c1+=2
 

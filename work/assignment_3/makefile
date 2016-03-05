@@ -6,5 +6,6 @@ run: main.py draw.py display.py
 imgur: main.py draw.py display.py
 	python main.py imgur
 clean:
+	rm *.pyc
 	rm *.ppm
 	rm *~

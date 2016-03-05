@@ -110,8 +110,9 @@ def matrix_mult( m1, m2 ):
             s = 0
             c3 = 0
             while(c3 < len(m2)):
-                m_fill[c1][c2] += m1[c1][c3] * m2[c3][c2]
+                s += m1[c1][c3] * m2[c3][c2]
                 c3 += 1
+            m_fill[c1][c2] = int(s)
             c2 += 1
         c1+= 1
     return m_fill
