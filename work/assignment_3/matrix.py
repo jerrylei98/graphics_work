@@ -90,17 +90,19 @@ def scalar_mult( matrix, x ):
     while c1 < len(matrix):
         c2 = 0
         while c2 < len(matrix[0]):
-            matrix[c1][c2] = matrix[c1][c2] * x
+            matrix[c1][c2] *=  x
             c2 += 1
         c1+=1
     return matrix
 
 #m1 * m2 -> m2
 def matrix_mult( m1, m2 ):
-    if len(m2[0]) != len(m1):
+    
+    if not len(m1[0]) == len(m2):
         print "Matrices cannot be multiplied.\n"
         return []
-    m_fill = new_matrix(len(m1), len(m2[0]))
+    
+    m_fill = new_matrix(len(m2[0]), len(m1))
     c1 = 0
     while c1 < len(m1):
         c2 = 0
@@ -108,9 +110,8 @@ def matrix_mult( m1, m2 ):
             s = 0
             c3 = 0
             while(c3 < len(m2)):
-                s += m1[c1][c3] * m2[c3][c2]
+                m_fill[c1][c2] += m1[c1][c3] * m2[c3][c2]
                 c3 += 1
-            m_fill[c1][c2] = s
             c2 += 1
         c1+= 1
     return m_fill

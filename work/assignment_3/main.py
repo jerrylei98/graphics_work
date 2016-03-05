@@ -14,9 +14,9 @@ else:
 #-----------
 #constant
 
-screen = new_screen()
-
-color = [ 0, 255, 0 ]
+m = [[], [], [], []]
+x = XRES/2
+y = YRES/2
 
 
 
