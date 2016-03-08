@@ -332,3 +332,31 @@ R * E2 = E3: translated -> scaled -> rotated
 
 More efficient:
 E3 = R * S * T * E0
+
+3716
+
+parametric equation:
+x = f(t)
+y = g(t)
+
+line(x0,y0) -> (x1,y1)
+f(x) = x0 + t(\x)
+g(y) = y0 + t(\y)
+
+t: 0 -> 1
+
+example (circle)
+double param_x(double t){
+ return 100 * cos(2*M_PI * t) + 250;
+
+}
+
+double param_y(double t){
+ return 100 *sin(2*M_PI*t) + 250;
+
+}
+
+
+make circle:
+x = r cos(theta) + cx
+y = r sin(theta) + cy
