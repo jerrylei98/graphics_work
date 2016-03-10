@@ -7,4 +7,5 @@ cd ~/github/graphics_work/scripts/
 python upload.py $1
 
 cd ~/github/image_files/
+sleep 3
 rm *
