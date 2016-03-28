@@ -4,27 +4,73 @@ import math
 
 
 def add_box( points, x, y, z, width, height, depth ):
+    """"""""""
+    B--------C
+    |\        \
+    | \        \
+    |  F--------G
+    A  |     D  |
+     \ |        |
+      \E--------H
+    """""""""""
+    add_edge(points,x,y,z,x+width,y,z) #A -> D
+    add_edge(points,x,y,z,x,y-height,z) #A -> B
+    add_edge(points,x,y,z,x,y,z-depth) #A -> E
 
-    add_edge(points, x, y, z, width, height, depth)
-    add_edge(points, x + width, y, z, x + width, height, depth) #width only
-    add_edge(points, x, y + height, z, width, y + height, depth) #height only
-    add_edge(points, x, y, z - depth, width, height, z - depth) #depth only
-    add_edge(points, x + width, y + height, z, x + width, y + height, depth) #width, height
-    add_edge(points, x + width, y, z - depth, x + width, height, z - depth) #width, depth
-    add_edge(points, x, y + height, z - depth, width, y + height, z - depth) #height, depth
-    add_edge(points, x + width, y + height, z + depth, x + width, y + height, z + depth) #width, height, depth
+    add_edge(points,x,y,z-depth,x,y-height,z-depth) #E->F
+    add_edge(points,x,y,z-depth,x+width,y,z-depth) #E->H
 
+    add_edge(points,x,y-height,z-depth,x,y-height,z) #F->B
+    add_edge(points,x,y-height,z-depth,x+width, y-height,z-depth) #F->G
+
+    add_edge(points,x+width,y-height,z-depth,x+width,y-height,z) #G->C
+    add_edge(points,x+width,y-height,z-depth,x+width,y,z-depth) #G->H
+
+    add_edge(points,x+width,y-height,z,x,y-height,z) #C->B
+    add_edge(points,x+width,y-height,z,x+width,y,z) #C->D
+
+    add_edge(points,x+width,y,z,x+width,y,z-depth) #D->H
+
+    return 0
 
 def add_sphere( points, cx, cy, cz, r, step ):
+    draw = []
+    generate_sphere(draw,cx,cy,cz,r,step)
+    for d in draw:
+        add_edge(points,d[0],d[1],d[2],d[0],d[1],d[2])
     return 0
 
 def generate_sphere( points, cx, cy, cz, r, step ):
+    phi = 0
+    while phi < 1:
+        theta = 0
+        while theta < 1:
+            x = r*math.cos(2*math.pi * theta) + cx
+            y = r*math.sin(2*math.pi * theta) * math.cos(math.pi*phi) + cy
+            z = r*math.sin(2*math.pi * theta) * math.sin(math.pi*phi) + cz
+            add_point(points,x,y,z)
+            theta += step
+        phi += step
     return 0
 
 def add_torus( points, cx, cy, cz, r0, r1, step ):
+    draw = []
+    generate_torus(draw,cx,cy,cz,r0, r1,step)
+    for d in draw:
+        add_edge(points,d[0],d[1],d[2],d[0],d[1],d[2])
     return 0
 
 def generate_torus( points, cx, cy, cz, r0, r1, step ):
+    phi = 0
+    while phi < 1:
+        theta = 0
+        while theta < 1:
+            x = r0*math.cos(2*math.pi * theta) + cx
+            y = math.cos(2*math.pi * phi) * (r0*math.sin(2*math.pi * theta) + r1) + cy
+            z = math.sin(2*math.pi * phi) * (r0*math.sin(2*math.pi * theta) + r1) + cz
+            add_point(points,x,y,z)
+            theta += step
+        phi += step
     return 0
 
 

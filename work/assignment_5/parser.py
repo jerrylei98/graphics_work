@@ -2,7 +2,7 @@ from display import *
 from matrix import *
 from draw import *
 
-ARG_COMMANDS = [ 'line', 'scale', 'translate', 'xrotate', 'yrotate', 'zrotate', 'circle', 'bezier', 'hermite' ]
+ARG_COMMANDS = [ 'line', 'scale', 'translate', 'xrotate', 'yrotate', 'zrotate', 'circle', 'bezier', 'hermite', 'box', 'sphere', 'torus' ]
 
 def parse_file( f, points, transform, screen, color ):
 
@@ -32,6 +32,15 @@ def parse_file( f, points, transform, screen, color ):
             elif cmd == 'hermite':
                 add_curve( points, args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], .01, 'hermite' )
 
+            elif cmd == 'box':
+                add_box( points, args[0], args[1], args[2], args[3], args[4], args[5])
+
+            elif cmd == 'sphere':
+                add_sphere( points, args[0], args[1], 0, args[2], 0.01)
+
+            elif cmd == 'torus':
+                add_torus( points, args[0], args[1], 0, args[2], args[3], 0.01)
+
             elif cmd == 'scale':
                 s = make_scale( args[0], args[1], args[2] )
                 matrix_mult( s, transform )
@@ -39,16 +48,7 @@ def parse_file( f, points, transform, screen, color ):
             elif cmd == 'translate':
                 t = make_translate( args[0], args[1], args[2] )
                 matrix_mult( t, transform )
-
-            elif cmd == 'box':
-                add_box( points, args[0], args[1], args[2], args[3], args[4], args[5])
-
-            elif cmd == 'sphere':
-                add_sphere( points, args[0], args[1], 0, args[2], 0.1)
-
-            elif cmd == 'torus':
-                add_torus( points, args[0], args[1], 0, args[2], args[3], 0.1)
-
+                
             else:
                 angle = args[0] * ( math.pi / 180 )
                 if cmd == 'xrotate':
