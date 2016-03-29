@@ -404,3 +404,26 @@ hermite curves:
 
 Bezier curves:
 Inputs: [
+
+32916
+wirefram/polygon meshes
+wireframe: 
+-3d objects we defined as the edges that connect the vertices
+-use existing code to add points to an edge matrix
+-fast
+
+polygon
+-3d objects are defined by polygons(usually triangles or quadralaterals) that cover the surface of the object.
+-3/4 points are used to define a polygon
+-change from edge matrix -> polygon matrix
+-help create solid objects & remove backfaces
+
+polygon matrix
+m = [p0 p1 p2, p0 p2 p3] 
+
+EDGE V POLYGON
+plot > plot
+draw_line > draw_line
+draw_lines > draw_polygons
+add_point > add_point
+add_edge > add_polygon * points must be added counterclockqise
