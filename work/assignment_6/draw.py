@@ -12,50 +12,69 @@ def add_polygon( points, x0, y0, z0, x1, y1, z1, x2, y2, z2 ):
 def draw_polygons( points, screen, color ):
     c1 = 0
     while c1 < len(points):
-        draw_line(screen, points[c1],[0], points[c1][1], points[c1+1][0], points[c1][1],color)
-        draw_line(screen, points[c1+1],[0], points[c1+1][1], points[c1+2][0], points[c1][1],color)
-        draw_line(screen, points[c1+2],[0], points[c1+2][1], points[c1][0], points[c1][1],color)
+        draw_line(screen, points[c1][0], points[c1][1], points[c1+1][0], points[c1+1][1],color)
+        draw_line(screen, points[c1+1][0], points[c1+1][1], points[c1+2][0], points[c1+2][1],color)
+        draw_line(screen, points[c1+2][0], points[c1+2][1], points[c1][0], points[c1][1],color)
         c1 += 3
 
 def add_box( points, x, y, z, width, height, depth ):
     x1 = x + width
     y1 = y - height
     z1 = z - depth
-
 #front
-    #D->C->B
-    add_polygon( points,
-              x1, y, z,
-              x1, y1, z,
-              x, y1, z )
-    #A->D->B
-    add_polygon( points,
-              x, y, z,
-              x1, y, z,
-              x, y1, z )
+    add_polygon(points,
+        x, y, z,
+        x1, y, z,
+        x1, y1, z)
+    add_polygon(points,
+        x, y, z,
+        x1, y1, z,
+        x, y1, z)
 #back
-    #G->F->H
-    add_polygon( points,
-              x1, y1, z1,
-              x, y1, z1,
-              x1, y, z1 )
-    #H->F->E
-    add_edge( points,
-              x1, y, z1
-              x1, y1, z,
-              x, y, z1 )
-    add_edge( points,
-              x, y, z1,
-              x, y, z1 )
-    add_edge( points,
-              x, y1, z1,
-              x, y1, z1 )
-    add_edge( points,
-              x1, y, z1,
-              x1, y, z1 )
-    add_edge( points,
-              x1, y1, z1,
-              x1, y1, z1 )
+    add_polygon(points,
+        x, y1, z1,
+        x, y, z1,
+        x1, y, z1)
+    add_polygon(points,
+        x, y1, z1,
+        x1, y, z1,
+        x1, y1, z1)
+#top
+    add_polygon(points,
+        x, y, z1,
+        x, y, z,
+        x1, y, z1)
+    add_polygon(points,
+        x, y, z,
+        x1, y, z1,
+        x1, y, z)
+#bottom
+    add_polygon(points,
+        x, y1, z1,
+        x, y1, z,
+        x1, y1, z)
+    add_polygon(points,
+        x, y1, z1,
+        x1, y1, z,
+        x1, y1, z1)
+#left
+    add_polygon(points,
+        x, y, z,
+        x, y1, z1,
+        x, y1, z)
+    add_polygon(points,
+        x, y, z,
+        x, y, z1,
+        x, y1, z1)
+#right
+    add_polygon(points,
+        x1, y, z,
+        x1, y1, z,
+        x1, y, z1)
+    add_polygon(points,
+        x1, y1, z,
+        x1, y, z1,
+        x1, y1, z1)
 
 def add_sphere( points, cx, cy, cz, r, step ):
 
@@ -116,10 +135,8 @@ def add_torus( points, cx, cy, cz, r0, r1, step ):
     while lat < lat_stop:
         longt = 0
         while longt < longt_stop:
-
             index = lat * num_steps + longt
-            add_edge( points, temp[index][0], temp[index][1], temp[index][2], temp[index][0], temp[index][1], temp[index][2] )
-
+            add_polygon()
             longt+= 1
         lat+= 1
 
@@ -129,13 +146,22 @@ def generate_torus( points, cx, cy, cz, r0, r1, step ):
     rot_stop = MAX_STEPS
     circle = 0
     circ_stop = MAX_STEPS
-
+    """
+    TL -- TR
+    |   / |
+    |  /  |
+    BL -- BR
+    """
     while rotation < rot_stop:
         circle = 0
         rot = float(rotation) / MAX_STEPS
         while circle < circ_stop:
-
             circ = float(circle) / MAX_STEPS
+            TL = [(math.cos( 2 * math.pi * rot ) * (r0 * math.cos( 2 * math.pi * circ) + r1 ) + cx), r0 * math.sin(2 * math.pi * circ) + cy, (math.sin( 2 * math.pi * rot ) * (r0 * math.cos(2 * math.pi * circ) + r1))] #base function
+            TR = [(math.cos( 2 * math.pi * rot ) * (r0 * math.cos( 2 * math.pi * circ) + r1 ) + cx), r0 * math.sin(2 * math.pi * circ) + cy, (math.sin( 2 * math.pi * rot ) * (r0 * math.cos(2 * math.pi * circ) + r1))] #base function
+            BL = [(math.cos( 2 * math.pi * rot ) * (r0 * math.cos( 2 * math.pi * circ) + r1 ) + cx), r0 * math.sin(2 * math.pi * circ) + cy, (math.sin( 2 * math.pi * rot ) * (r0 * math.cos(2 * math.pi * circ) + r1))] #base function
+            BR = [(math.cos( 2 * math.pi * rot ) * (r0 * math.cos( 2 * math.pi * circ) + r1 ) + cx), r0 * math.sin(2 * math.pi * circ) + cy, (math.sin( 2 * math.pi * rot ) * (r0 * math.cos(2 * math.pi * circ) + r1))] #base function
+
             x = (math.cos( 2 * math.pi * rot ) *
                  (r0 * math.cos( 2 * math.pi * circ) + r1 ) + cx)
             y = r0 * math.sin(2 * math.pi * circ) + cy

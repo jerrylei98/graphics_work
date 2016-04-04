@@ -21,13 +21,13 @@ def parse_file( f, points, transform, screen, color ):
 
             if cmd == 'line':
                 add_edge( points, args[0], args[1], args[2], args[3], args[4], args[5] )
-                
+
             elif cmd == 'circle':
                 add_circle( points, args[0], args[1], 0, args[2], .01 )
-            
+
             elif cmd == 'bezier':
                 add_curve( points, args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], .01, 'bezier' )
-            
+
             elif cmd == 'hermite':
                 add_curve( points, args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], .01, 'hermite' )
 
@@ -61,7 +61,7 @@ def parse_file( f, points, transform, screen, color ):
 
         elif cmd == 'ident':
             ident( transform )
-            
+
         elif cmd == 'apply':
             matrix_mult( transform, points )
 
@@ -70,8 +70,8 @@ def parse_file( f, points, transform, screen, color ):
 
         elif cmd in ['display', 'save' ]:
             screen = new_screen()
-            draw_lines( points, screen, color )
-            
+            draw_polygons( points, screen, color )
+
             if cmd == 'display':
                 display( screen )
 
@@ -79,7 +79,7 @@ def parse_file( f, points, transform, screen, color ):
                 c+= 1
                 save_extension( screen, commands[c].strip() )
         elif cmd == 'quit':
-            return    
+            return
         elif cmd[0] != '#':
             print 'Invalid command: ' + cmd
         c+= 1
