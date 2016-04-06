@@ -457,6 +457,18 @@ B = p2 - p0 <x2 - x0, y2 - y0, z2 - z0>
 A x B = <aybz - azby, azbx-axbz, axby - aybx>
 
 2. Calculate theta (angle between surface normal and view vector)
-3. if theta is in appropriate range, draw the surface
+3. if theta is in appropriate range (90 < theta < 270), draw the surface
 
 
+4616
+
+continuation from 4516
+
+1. surface normal = vector A x vector B
+A x B = <aybz - azby, azbx-axbz, axby - aybx>
+
+2. find theta 
+View vector = <0,0,-1>
+(angle between surface normal and view vector)
+N dot V = |N||V|(cos theta) --between 90 and 270, cos theta < 0
+N dot V = NxVx + NyVy + NzVz
