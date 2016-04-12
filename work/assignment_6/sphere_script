@@ -1,0 +1,13 @@
+sphere
+0 0 150
+ident
+yrotate
+0
+xrotate
+0
+zrotate
+0
+translate
+250 250 0
+apply
+display
