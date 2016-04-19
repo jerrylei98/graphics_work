@@ -472,3 +472,76 @@ View vector = <0,0,-1>
 (angle between surface normal and view vector)
 N dot V = |N||V|(cos theta) --between 90 and 270, cos theta < 0
 N dot V = NxVx + NyVy + NzVz
+
+
+41216
+
+Relative Coordinate System
+- currently all objects are drawn on the same grid with respect to the origin(global coordinate system)
+- in a relative C.S., each object can have its own origin
+- once you are done describing the c.s. for an object, you draw it, then reset your polygon matrix and tranformation matrix
+- we will maintain a stack of transormation matricies(origin/coordinate system)
+
+Drawing pipline
+a. transfomrations are applied to the current top of the stack.
+b. origins can be pushed or popped
+c. drawing goes as follows
+  1. generate & and points to a point matrix
+  2. multiply points by the top of the stack
+  3. draw the image to a screen
+  4. clear the point matrix
+
+41316
+Drawing: sphere on top of box
+
+, = newline
+
+command \ cs stack \ image
+push \ I, I \ blank image
+------------------------
+translate x,y,z \ T*I, I \ origin moved
+------------------------
+box x,y,z,w,h,d \ T*I, I \ origin middle of box
+------------------------
+push \ T0 * I, T0 * I, I \ origin middle of box (T0 bottom left)
+------------------------
+translate x,y,z \ T1 * T0 * I, T0 * I, I\ box with origin center of sphere
+------------------------
+sphere x,y,z,r \ T1 * t0 * I, T0 * I, I\sphere box
+------------------------
+pop \ T0 * I, I\sphere box
+------------------------
+translate x,y,z \ T2 * T0 * I, T0 * I, I\ origin move to top right box
+------------------------
+box x,y,z,w,h,d \ T2 * T0 * I, T0 * I, I\arm created, connected with box, not sphere
+
+
+41916
+
+compilers
+source code -> compiler -> executable
+
+compiler = lexer -> parser -> semantic analyzer -> optimizer -> code generator
+
+lexer: 
+- performs lexical analysis
+- knows all the tokens in your language
+- scans code and generates a list of tokens
+
+ex. 
+int main(){
+ long x = 5 + 6;
+ printf('%l', x);
+ return 0;
+}
+
+parser:
+- perform syntax analysis
+- knows the structure of the language
+- create a syntax tree from the token list
+- syntax errors are going to be intercepted at this point
+
+semantic analyzer:
+- knows how to interpret the syntax tree
+- creates a list of operations to perform
+- creates a symbol (variables) table 
