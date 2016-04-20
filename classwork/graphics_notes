@@ -541,7 +541,34 @@ parser:
 - create a syntax tree from the token list
 - syntax errors are going to be intercepted at this point
 
+
 semantic analyzer:
 - knows how to interpret the syntax tree
 - creates a list of operations to perform
 - creates a symbol (variables) table 
+- 
+
+42016
+Semantic Analyzer
+- knows what operations the tokens in the parse tree match.
+- knows the order to navigate the parsetree
+- generates
+  1. symbol table:
+    - list of symbols with associated information (type,function)
+  2. list of operations in the order they should be performed
+
+Symbol table:
+name    type value
+main    int,f
+x       long
+printf  void, f
+
+operation list
++: 5,6
+=: x
+printf: "hi"
+return: x
+
+--> code generator:
+- knows the assembly/machine code that matches the operations in the operation list.
+- generates the machine code for the program
