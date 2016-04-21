@@ -572,3 +572,18 @@ return: x
 --> code generator:
 - knows the assembly/machine code that matches the operations in the operation list.
 - generates the machine code for the program
+
+
+42116
+lexer -> parser -> semantic analyzer(optimizer) -> code generator
+flex -> yacc(yet another compiler compiler)/bison -> 
+
+mdl -> motion descriptor language
+
+tokens in .l
+grammar rules in .y
+
+in .y
+yyparse();
+pcode will create the tables
+
