@@ -587,3 +587,5 @@ in .y
 yyparse();
 pcode will create the tables
 
+5316
+animation in mdl:
