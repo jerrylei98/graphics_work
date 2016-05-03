@@ -589,3 +589,23 @@ pcode will create the tables
 
 5316
 animation in mdl:
+- moving an image
+
+move 400 0 0  -- moves 400 to the right
+we want: 
+move 400 0 0 <percentage> -- how much of the move should be done
+
+vary factor 0 4 (start and end factor) 0 1 (Start and end value)
+
+leading 0s because imagemagick tool creates animation alphabetically
+$ animate <files>
+$ convert <files> <gif name> 
+
+New MDL commands:
+frames
+ : frames <N> -- set the frames in the image - should only appear once
+basename
+ :basename <S> -- set the start of each frame's filename
+vary
+ : vary <knob><fo><fi><vo<vi> -- describes how a knob will change over time
+ 
