@@ -600,6 +600,7 @@ vary factor 0 4 (start and end factor) 0 1 (Start and end value)
 leading 0s because imagemagick tool creates animation alphabetically
 $ animate <files>
 $ convert <files> <gif name> 
+$ animate <gif file>
 
 New MDL commands:
 frames
@@ -609,3 +610,21 @@ basename
 vary
  : vary <knob><fo><fi><vo<vi> -- describes how a knob will change over time
  
+animation:
+pass1: 
+- look for any animation command frames, basenma,e vary
+- check for errors in animation commands
+- set the number of frames
+- set the basename,
+-- if basename is not present, use a default value and alert the user
+pass2:
+- calculate and store knob values
+- only use vary commands
+- generate an array/list where each index represents a frame and stores a list of knob names and values
+pass3:
+- drawing loop
+- if no animation code is present, draw a single image
+- if there is animation code for each frame:
+-- set smbol table values based on the knob table from pass II
+-- go through the operations as usual, applying knobs when present
+-- at the end of each frame loop, save the image using the basename + filename # with leading 0's
