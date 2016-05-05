@@ -610,6 +610,7 @@ basename
 vary
  : vary <knob><fo><fi><vo<vi> -- describes how a knob will change over time
  
+ 5416
 animation:
 pass1: 
 - look for any animation command frames, basenma,e vary
