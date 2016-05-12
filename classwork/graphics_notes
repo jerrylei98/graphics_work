@@ -629,3 +629,14 @@ pass3:
 -- set smbol table values based on the knob table from pass II
 -- go through the operations as usual, applying knobs when present
 -- at the end of each frame loop, save the image using the basename + filename # with leading 0's
+
+51116
+scanline conversion:
+-filling in polygons by drawing a series of lines
+-horizontal/vertical
+ 1. order the points vertically
+ 2. start BB
+ 3. (x0,y0) will always be on BM or MT
+    (x1,y1) will always be on BT
+    (xb,yb) -> (xb,yb)
+    
