@@ -640,3 +640,8 @@ scanline conversion:
     (x1,y1) will always be on BT
     (xb,yb) -> (xb,yb)
     
+z-buffering:
+- keep track of z coordinates in separate two dimentional array
+- when plotting a pixel check if its z-value is greater than the current z-buffer value for that pixel 
+- calculate values for each pixel
+- initalize the z-buffer with the smallest possible value
