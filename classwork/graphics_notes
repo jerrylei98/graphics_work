@@ -645,3 +645,27 @@ z-buffering:
 - when plotting a pixel check if its z-value is greater than the current z-buffer value for that pixel 
 - calculate values for each pixel
 - initalize the z-buffer with the smallest possible value
+
+52316
+model real lighting
+2 distinct parts
+1. reflective properties of theo bject
+2. the properties of the light source(s) - color and intensity
+
+light equation
+- we need to determine a color value for each polygon (or pixel)
+- for grayscale images, we can calculate the color once per polygon and use that for red, green, and blue
+- for color images, we need to caculate color values separately
+- I (allumination) = Iambient + Idiffuse + Ispecular [three different kinds of light and reflection]
+
+Two kinds of light sources:
+1. ambient light hits all objects with the same3 color and intensity
+2. point light sources come from a specific location and do not hit all services evenly
+
+lighting equation:
+ambient light:
+ - combination of the color of the ambient light and how much of that light is reflected
+diffuse reflection:
+ - takes light from a single source and reflects it evenly in all directions. 
+specular reflection:
+ - reflects point sources at a specific vector
